@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "942366803467",
+    "project_id": "ourpass-auth",
+    "storage_bucket": "ourpass-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942366803467:android:6c90c9d20f6e19db1fe90e",
+        "android_client_info": {
+          "package_name": "com.example.ourpassAuthProject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942366803467-up2ceq14f8mmqb9394octm16js0d7bfb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtpkeAqvJf1gntUBVgiONZKJb_CCH1kQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942366803467-up2ceq14f8mmqb9394octm16js0d7bfb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "942366803467-ocvltdij10qhal56ndjgauhemdbp90ue.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ourpassAuthProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
