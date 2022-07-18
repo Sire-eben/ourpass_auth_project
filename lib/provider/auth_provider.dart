@@ -90,8 +90,7 @@ class AuthProvider with ChangeNotifier {
     _isLoading = true;
     try {
       await fAuth.signOut().then((value) {
-        _isLoading = false;
-        PageNavigation().push(context, const LoginScreen());
+        PageNavigation().remove(context, const LoginScreen());
       });
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(mySnackbar(e.message!));

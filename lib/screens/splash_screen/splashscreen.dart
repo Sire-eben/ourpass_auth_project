@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   startTimer() => Timer(const Duration(seconds: 3), () async {
         fAuth.currentUser != null
             ? PageNavigation().replace(context, const HomeScreen())
-            : PageNavigation().replace(context, SignUpScreen());
+            : PageNavigation().replace(context, const SignUpScreen());
       });
 
   @override
