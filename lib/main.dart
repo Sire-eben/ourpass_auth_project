@@ -23,6 +23,11 @@ class MyApp extends StatelessWidget {
         title: 'Firebase Authentication',
         theme: ThemeData(
           primarySwatch: Colors.lightGreen,
+          scaffoldBackgroundColor: Colors.white,
+          pageTransitionsTheme: const PageTransitionsTheme(builders: {
+            TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+          }),
         ),
         home: const SplashScreen(),
       ),

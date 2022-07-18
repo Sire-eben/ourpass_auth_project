@@ -1,6 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ourpass_auth_project/global/global.dart';
+import 'package:ourpass_auth_project/navigation/page_navigation.dart';
+
+import '../screens/auth/login.dart';
 
 class AuthProvider with ChangeNotifier {
   //SETTER
@@ -10,12 +12,12 @@ class AuthProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
 
   Future<void> registerWithEmailAndPassword(
-    BuildContext? context,
-    String _email,
-    String _password,
-    String firstName,
-    String lastName,
-  ) async {
+      BuildContext context,
+      String _email,
+      String _password,
+      String firstName,
+      String lastName,
+      Widget newPage) async {
     _isLoading = true;
 
     await fAuth
@@ -31,12 +33,28 @@ class AuthProvider with ChangeNotifier {
       });
     }).then((value) {
       _isLoading = false;
+      PageNavigation().remove(context, newPage);
     });
 
     notifyListeners();
   }
 
-  void signOut(BuildContext? context) {
-    fAuth.signOut().then((value) {});
+  void signInWithEmailAndPassword(
+      BuildContext context, String _email, _password, Widget newPage) async {
+    await fAuth
+        .signInWithEmailAndPassword(email: _email, password: _password)
+        .whenComplete(() {
+      PageNavigation().remove(context, newPage);
+    });
+    notifyListeners();
+  }
+
+  void signOut(BuildContext context) {
+    _isLoading = true;
+    fAuth.signOut().then((value) {
+      _isLoading = false;
+      PageNavigation().push(context, const LoginScreen());
+    });
+    notifyListeners();
   }
 }
