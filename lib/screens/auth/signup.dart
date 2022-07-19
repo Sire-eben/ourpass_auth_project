@@ -132,10 +132,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: passwordController,
                     inputType: TextInputType.emailAddress,
                     obscureText: isObscure,
-                    suffix:  Icon(
-                      isObscure
-                          ? CupertinoIcons.eye
-                          : CupertinoIcons.eye_slash,
+                    suffix: Icon(
+                      isObscure ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
                     ).onTap(() {
                       setState(() {
                         isObscure = !isObscure;
@@ -150,7 +148,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     label: "Confirm password",
                     hint: "Re-enter password",
                     obscureText: isObscure2,
-                    suffix:  Icon(
+                    suffix: Icon(
                       isObscure2
                           ? CupertinoIcons.eye
                           : CupertinoIcons.eye_slash,
@@ -164,18 +162,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   auth.isLoading
                       ? const Padding(
-                    padding:  EdgeInsets.symmetric(vertical: 16.0),
-                    child:  Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),),
-                  )
+                          padding: EdgeInsets.symmetric(vertical: 16.0),
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.primaryColor,
+                            ),
+                          ),
+                        )
                       : CustomButton(
                           action: () {
                             if (_formKey.currentState!.validate()) {
-                              if (passwordController.text ==
-                                  confirmPasswordController.text) {
+                              if (passwordController.text.trim() ==
+                                  confirmPasswordController.text.trim()) {
                                 auth.registerWithEmailAndPassword(
                                   context,
                                   emailController.text.trim(),
-                                  passwordController.text,
+                                  passwordController.text.trim(),
                                   firstNameController.text.trim(),
                                   lastNameController.text.trim(),
                                   const VerificationScreen(),
@@ -199,8 +201,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       InkWell(
-                        onTap: auth.isLoading ? null : () => PageNavigation()
-                            .replace(context, const LoginScreen()),
+                        onTap: auth.isLoading
+                            ? null
+                            : () => PageNavigation()
+                                .replace(context, const LoginScreen()),
                         child: const Text(
                           "Sign in",
                           style: TextStyle(

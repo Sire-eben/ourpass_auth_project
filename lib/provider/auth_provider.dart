@@ -27,10 +27,12 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
     try {
       //TRY TO CREATE ACCOUNT USING EMAIL & PASSWORD PROVIDED
-      await fAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      ).then((auth) => currentUser = auth.user);
+      await fAuth
+          .createUserWithEmailAndPassword(
+            email: email,
+            password: password,
+          )
+          .then((auth) => currentUser = auth.user);
     } on FirebaseAuthException catch (e) {
       //IF THERE IS ANY ERROR, SHOW ERROR AND STOP AUTHENTICATION
       _isLoading = false;
@@ -44,8 +46,7 @@ class AuthProvider with ChangeNotifier {
         _isLoading = false;
         notifyListeners();
         //SEND TO VERIFICATION SCREEN
-        PageNavigation().replace(context,  VerificationScreen(
-        ));
+        PageNavigation().replace(context, VerificationScreen());
       });
     }
     notifyListeners();
@@ -82,21 +83,20 @@ class AuthProvider with ChangeNotifier {
           .then((auth) {
         currentUser = auth.user!;
         if (currentUser != null) {
-          checkIfUserExist(context, currentUser);
+          checkIfUserDataExist(context, currentUser);
         }
       });
       notifyListeners();
-    } on FirebaseAuthException {
+    } on FirebaseAuthException catch (e) {
       _isLoading = false;
       notifyListeners();
-      ScaffoldMessenger.of(context).showSnackBar(mySnackbar(
-          "Something went wrong. Please check your email/password."));
+      ScaffoldMessenger.of(context).showSnackBar(mySnackbar(e.message!));
     }
     notifyListeners();
   }
 
   //CHECK IF EMAIL EXIST IN DATABASE
-  Future checkIfUserExist(BuildContext context, User? currentUser) async {
+  Future checkIfUserDataExist(BuildContext context, User? currentUser) async {
     await firebaseFirestore
         .collection("users")
         .doc(currentUser!.uid)
@@ -146,6 +146,7 @@ class AuthProvider with ChangeNotifier {
     try {
       await fAuth.signOut().then((value) {
         PageNavigation().remove(context, const LoginScreen());
+        notifyListeners();
       });
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(mySnackbar(e.message!));

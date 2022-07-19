@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:942366803467:android:6c90c9d20f6e19db1fe90e",
+        "mobilesdk_app_id": "1:942366803467:android:82185f748375944b1fe90e",
         "android_client_info": {
-          "package_name": "com.example.ourpassAuthProject"
+          "package_name": "com.example.ourpass_auth_project"
         }
       },
       "oauth_client": [

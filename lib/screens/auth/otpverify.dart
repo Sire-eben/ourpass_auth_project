@@ -110,7 +110,7 @@ class _OTPScreenState extends State<OTPScreen> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 )
               ],

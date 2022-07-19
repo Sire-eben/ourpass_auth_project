@@ -84,10 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: passwordController,
                     inputType: TextInputType.emailAddress,
                     obscureText: isObscure,
-                    suffix:  Icon(
-                      isObscure
-                          ? CupertinoIcons.eye
-                          : CupertinoIcons.eye_slash,
+                    suffix: Icon(
+                      isObscure ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
                     ).onTap(() {
                       setState(() {
                         isObscure = !isObscure;
@@ -110,12 +108,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (_formKey.currentState!.validate()) {
                               auth.signInWithEmailAndPassword(
                                   context,
-                                  emailController.text,
-                                  passwordController.text,
+                                  emailController.text.trim(),
+                                  passwordController.text.trim(),
                                   const VerificationScreen());
                             }
                           },
-                          label: "Sign up",
+                          label: "Login",
                         ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -128,8 +126,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       InkWell(
-                        onTap: auth.isLoading ? null : () => PageNavigation()
-                            .replace(context, const SignUpScreen()),
+                        onTap: auth.isLoading
+                            ? null
+                            : () => PageNavigation()
+                                .replace(context, const SignUpScreen()),
                         child: const Text(
                           "Sign up",
                           style: TextStyle(
