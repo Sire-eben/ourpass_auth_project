@@ -1,4 +1,4 @@
-# ourpass_auth_project
+## Mobile Frontend Engineer Firebase Auth Assessment
 
 Design of an authentication system with flutter & firebase
 
