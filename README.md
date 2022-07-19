@@ -2,15 +2,18 @@
 
 Design of an authentication system with flutter & firebase
 
-## Getting Started
+## Requirements:
+1. users should be able to signup using:
+- name, email and password
+- verify their email with otp (can be hardcoded)
+1. users should be able to login to their account using: 
+- email/password and/or biometric(faceID or fingerprint)
+1. After a login/signup, users should be: 
+- redirected to the homepage (which can be an empty screen).
+- Users can only access the homepage if
 
-This project is a starting point for a Flutter application.
+  1. They’re authenticated (i.e they’ve logged in successfully) 
 
-A few resources to get you started if this is your first Flutter project:
+  2. Their email is verified
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## OTP CODE = 1234
