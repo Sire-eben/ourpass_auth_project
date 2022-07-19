@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ourpass_auth_project/global/global.dart';
 import 'package:ourpass_auth_project/navigation/page_navigation.dart';
 import 'package:ourpass_auth_project/screens/auth/login.dart';
-import 'package:ourpass_auth_project/screens/auth/signup.dart';
-import 'package:ourpass_auth_project/screens/homescreen/homescreen.dart';
+import 'package:ourpass_auth_project/screens/auth/verification.dart';
 import 'package:ourpass_auth_project/style/style.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,8 +17,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   startTimer() => Timer(const Duration(seconds: 3), () async {
         fAuth.currentUser != null
-            ? PageNavigation().replace(context, const HomeScreen())
-            : PageNavigation().replace(context, const SignUpScreen());
+            ? PageNavigation().replace(context, const VerificationScreen())
+            : PageNavigation().replace(context, const LoginScreen());
       });
 
   @override

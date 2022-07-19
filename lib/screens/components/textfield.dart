@@ -8,16 +8,20 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? inputType;
   final String? Function(String? input)? validator;
   final bool obscureText;
+  final bool readOnly;
+  final Widget? suffix;
 
-  const CustomTextField(
-      {Key? key,
-      required this.label,
-      this.inputType,
-      this.validator,
-      required this.obscureText,
-      required this.controller,
-      required this.hint})
-      : super(key: key);
+  const CustomTextField({
+    Key? key,
+    required this.label,
+    this.inputType,
+    this.validator,
+    this.obscureText = false,
+    required this.controller,
+    required this.hint,
+    this.readOnly = false,
+    this.suffix,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +41,15 @@ class CustomTextField extends StatelessWidget {
 
           //TEXTFIELD
           TextFormField(
+            readOnly: readOnly,
             controller: controller,
             keyboardType: inputType,
             obscureText: obscureText,
             validator: validator,
             decoration: InputDecoration(
+              iconColor: AppColors.subColor,
               hintText: hint,
+              suffixIcon: suffix,
               hintStyle: const TextStyle(
                 color: AppColors.subColor,
                 fontSize: 14,
@@ -68,6 +75,16 @@ class CustomTextField extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+extension WidgetExtension on Widget {
+  Widget onTap(VoidCallback action, {bool opaque = true}) {
+    return GestureDetector(
+      behavior: opaque ? HitTestBehavior.opaque : HitTestBehavior.deferToChild,
+      onTap: action,
+      child: this,
     );
   }
 }

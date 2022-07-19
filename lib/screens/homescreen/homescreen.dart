@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home screen"),
+        title: const Text("Home screen"),
         actions: [
           IconButton(
               onPressed: () => showDialog(
@@ -25,13 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     return CustomAlert(
                       title: "Sign out",
                       content:
-                          "You are about to sign out of your account. Continue?",
-                      action: () =>
-                          Provider.of<AuthProvider>(context, listen: false)
-                              .signOut(context),
+                      "You are about to sign out of your account. Continue?",
+                      action: () => Provider.of<AuthProvider>(
+                          context,
+                          listen: false)
+                          .signOut(context),
                     );
                   }),
-              icon: Icon(
+              icon: const Icon(
                 Icons.logout,
                 color: AppColors.whiteColor,
               ))

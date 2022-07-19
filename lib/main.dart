@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         title: 'Firebase Authentication',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.lightGreen,
+          primarySwatch: Colors.grey,
           scaffoldBackgroundColor: Colors.white,
           pageTransitionsTheme: const PageTransitionsTheme(builders: {
             TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
