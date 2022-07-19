@@ -83,7 +83,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           readOnly: auth.isLoading ? true : false,
                           label: "First name",
                           hint: "e.g, John",
-                          obscureText: false,
                           controller: firstNameController,
                           validator: (value) {
                             return value == null || value.isEmpty
@@ -101,7 +100,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           readOnly: auth.isLoading ? true : false,
                           label: "Last name",
                           hint: "e.g, Doe",
-                          obscureText: false,
                           controller: lastNameController,
                           validator: (value) {
                             return value == null || value.isEmpty
@@ -120,7 +118,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     hint: "e.g, johndoe@gmail.com",
                     controller: emailController,
                     inputType: TextInputType.emailAddress,
-                    obscureText: false,
                     validator: (value) => Validators.validateEmail(value),
                   ),
 

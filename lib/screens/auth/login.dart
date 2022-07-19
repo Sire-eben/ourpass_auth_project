@@ -72,7 +72,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     hint: "e.g, johndoe@gmail.com",
                     controller: emailController,
                     inputType: TextInputType.emailAddress,
-                    obscureText: false,
                     validator: (value) => Validators.validateEmail(value),
                   ),
 
